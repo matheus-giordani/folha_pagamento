@@ -19,4 +19,4 @@ The `JAVA PROJECTS` view allows you to manage your dependencies. More details ca
 
 ## Project explanation video
 
-> [video of the project](https://drive.google.com/file/d/1idRdtWq6bwBA03z_UUVe-ZNHgkR_5HIc/view?usp=sharing)
+> [Project video](https://drive.google.com/file/d/1idRdtWq6bwBA03z_UUVe-ZNHgkR_5HIc/view?usp=sharing)
