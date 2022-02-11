@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
-import java.time.temporal.WeekFields;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -18,7 +17,7 @@ import java.util.Locale;
 import java.util.Scanner;
 import java.util.Set;
 
-import javax.print.DocFlavor.STRING;
+
 
 import java.time.DayOfWeek;
 
@@ -28,10 +27,7 @@ import entities.employee;
 import entities.typeOfEmployee.*;
 
 public class main {
-    private static final String dia = null;
-    private static final String mes = null;
-    private static final String ano = null;
-
+    
     public static void main(String[] args) throws Exception {
         Locale.setDefault(Locale.US);
         Scanner input = new Scanner(System.in);
@@ -45,7 +41,7 @@ public class main {
         list_type_PaySchedule.add("SEMANAL 1 SEX");
         List<PaySchedule> registerPaySchedule = new ArrayList<>();
         LocalDate today = LocalDate.now();
-        LocalDate tomorrow = today.plusDays(1);
+        
 
         // variable temporary
         int interfaceVariable = 0, numIdentification = 0, aux1, aux2, syndInt;
@@ -385,6 +381,7 @@ public class main {
                     // int tam = stringSeparate.length;
                     // stringSeparate.hashCode();
 
+                    
                     // MENSAL
                     if ((restDayOfMonth == 0 && (dayOfWeek != "SAB" && dayOfWeek != "DOM")
                             || (restDayOfMonth == 2 && dayOfWeek.equals("SEX")))) {
@@ -470,37 +467,8 @@ public class main {
                     System.out.print("option:");
                     aux1 = input.nextInt();
                     aux = "0";
-                    switch (aux1) {
-                        case 0:
-                            System.out.println("Day of Month to receive:");
-                            System.out.println("WORNING: choose numbers between 1 and 28");
-                            System.out.print("option:");
-                            aux2 = input.nextInt();
-                            aux = "MENSAL " + String.valueOf(aux2);
-
-                            break;
-
-                        case 1:
-                            System.out.println("Day of Month to receive:");
-                            System.out.print("SEG\nTER\nQUA\nQUI\nSEX\n");
-                            System.out.print("option:");
-                            input.nextLine();
-                            aux = input.nextLine();
-                            aux = "SEMANAL 1 " + aux;
-
-                            break;
-
-                        case 2:
-                            System.out.println("Day of Month to receive:");
-                            System.out.print("segunda\nterça\nquarta\nquinta\nsexta\n");
-                            System.out.print("option:");
-                            input.nextLine();
-                            aux = input.nextLine();
-                            aux = "SEMANAL 2 " + aux;
-
-                            break;
-
-                    }
+                    PaySchedule pay_schedulele = new PaySchedule();
+                    aux = pay_schedulele.AddPaySchedule(aux1);
                     aux_bool = true;
                     for (String i : list_type_PaySchedule) {
                         if ((i.compareTo(aux)) == 0) {
@@ -525,18 +493,18 @@ public class main {
     }
 
     // roda a folha de pagamento
-    public class runPayroll {
-
-        public void runPayroll() {
-
-        }
-
-    }
+  
 
     static class PaySchedule {
         private int id;
         private String paySchedule;
 
+        
+        public PaySchedule() {
+            
+            
+        }
+        
         public PaySchedule(int id, String paySchedule) {
             this.id = id;
             this.paySchedule = paySchedule;
@@ -553,6 +521,51 @@ public class main {
 
         public void setPaySchedule(String paySchedule) {
             this.paySchedule = paySchedule;
+        }
+        
+        
+
+        public String AddPaySchedule(int aux1){
+
+            
+            int aux2;
+            String aux ="erro";
+            Scanner inputs = new Scanner(System.in);
+
+            switch (aux1) {
+                case 0:
+                    System.out.println("Day of Month to receive:");
+                    System.out.println("WORNING: choose numbers between 1 and 28");
+                    System.out.print("option:");
+                    aux2 = inputs.nextInt();
+                    aux = "MENSAL " + String.valueOf(aux2);
+
+                    break;
+
+                case 1:
+                    System.out.println("Day of Month to receive:");
+                    System.out.print("SEG\nTER\nQUA\nQUI\nSEX\n");
+                    System.out.print("option:");
+                    inputs.nextLine();
+                    aux = inputs.nextLine();
+                    aux = "SEMANAL 1 " + aux;
+
+                    break;
+
+                case 2:
+                    System.out.println("Day of Month to receive:");
+                    System.out.print("segunda\nterça\nquarta\nquinta\nsexta\n");
+                    System.out.print("option:");
+                    inputs.nextLine();
+                    aux = inputs.nextLine();
+                    aux = "SEMANAL 2 " + aux;
+
+                    break;
+
+            }
+           
+            return aux;
+            
         }
     }
 

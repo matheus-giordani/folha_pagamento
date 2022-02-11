@@ -1,7 +1,6 @@
 package entities;
 
-import entities.typeOfEmployee.*;
-import interfaces.modify;
+
 
 public abstract class employee { // transformando a classe em abstrata ela não podera mais ser instanciada apenas
                                  // suas subclasses
